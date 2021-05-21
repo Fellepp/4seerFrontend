@@ -16,7 +16,7 @@ async function sendFile(file) {
 
 async function sendParameters(data) {
     console.log("Got", data)
-    return axios.post(baseURL + '/datadisplayer', data
+    return axios.post(baseURL + '/image', data
     )
     .then(function(response){
         return response;
@@ -24,7 +24,7 @@ async function sendParameters(data) {
 }
 
 function getImage(name) {
-    return axios.get(baseURL + '/datadisplayer?file=' + name, { responseType: 'arraybuffer'})
+    return axios.get(baseURL + '/image?file=' + name + ".png", { responseType: 'arraybuffer'})
     .then(response => {
         let blob = new Blob(
             [response.data],

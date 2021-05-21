@@ -1,5 +1,7 @@
 import React from 'react'
 import Lineplot from './plots/Lineplot'
+import Barplot from './plots/Barplot'
+import Scatterplot from './plots/Scatterplot'
 import { changeInputs } from '../store/actions'
 import { connect } from 'react-redux'
 import { useEffect, useState } from 'react'
@@ -34,8 +36,8 @@ const ConnectedGraphMapper = ({ columns, changeInputs, input }) => {
         return(
             <div>
                 {input.plot === 'line' ? <Lineplot/> : <></>}
-                {input.plot === 'bar' ? <p>Bar</p> : <></>}
-                {input.plot === 'scatter' ? <p>Scatter</p> : <></>}
+                {input.plot === 'bar' ? <Barplot/> : <></>}
+                {input.plot === 'scatter' ? <Scatterplot/> : <></>}
 
                 <button onClick={() => {updatePlot("line")}}>Line</button>
                 <button onClick={() => {updatePlot("bar")}}>Bar</button>

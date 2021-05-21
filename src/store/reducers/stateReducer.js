@@ -5,6 +5,7 @@ const initState = {
     currentState: {
         sent: false,
         received: false,
+        parameters: false,
         display: false
     }
 }
