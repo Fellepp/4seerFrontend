@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { sendFile, sendParameters, getImage } from '../models/ModelsBigD'
 import GraphMapper from './graphMapper'
 import { useState, useEffect } from 'react'
+import GeoMap from './plots/Geomap'
 
 const mapStateToProps = (state) => {
     return {
@@ -23,7 +24,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const ConnectedVisualizeUpload = ({ currentState,  changeState, columns, changeColumns, inputs, changeInputs, img, changeImage }) => {
+const ConnectedGeoMapper = ({ currentState,  changeState, columns, changeColumns, inputs, changeInputs, img, changeImage }) => {
     const [locStates, setLocStates] = useState(currentState)
 
     const handleCSV = async(e) => {
@@ -55,7 +56,7 @@ const ConnectedVisualizeUpload = ({ currentState,  changeState, columns, changeC
 
     return (
         <div className="file-uploader">
-            {currentState.received ? <GraphMapper/> : <></>}
+            {currentState.received ? <GeoMap/> : <></>}
             <br/>
             <input type="file" accept=".csv" onClick={resetState} onChange={handleCSV}></input>
             {currentState.sent ? <></> : <p>You have to upload the dataset before you can display any data</p>}
@@ -63,5 +64,5 @@ const ConnectedVisualizeUpload = ({ currentState,  changeState, columns, changeC
     )
 }
 
-const VisualizeUpload = connect(mapStateToProps, mapDispatchToProps)(ConnectedVisualizeUpload)
-export default VisualizeUpload
+const GeoMapper = connect(mapStateToProps, mapDispatchToProps)(ConnectedGeoMapper)
+export default GeoMapper

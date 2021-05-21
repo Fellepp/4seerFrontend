@@ -2,6 +2,8 @@ import React from 'react'
 import Lineplot from './plots/Lineplot'
 import Barplot from './plots/Barplot'
 import Scatterplot from './plots/Scatterplot'
+import Boxplot from './plots/Boxplot'
+import Distplot from './plots/Distplot'
 import { changeInputs } from '../store/actions'
 import { connect } from 'react-redux'
 import { useEffect, useState } from 'react'
@@ -38,10 +40,19 @@ const ConnectedGraphMapper = ({ columns, changeInputs, input }) => {
                 {input.plot === 'line' ? <Lineplot/> : <></>}
                 {input.plot === 'bar' ? <Barplot/> : <></>}
                 {input.plot === 'scatter' ? <Scatterplot/> : <></>}
+                {input.plot === 'box' ? <Boxplot/> : <></>}
+                {input.plot === 'dist' ? <Distplot/> : <></>}
 
-                <button onClick={() => {updatePlot("line")}}>Line</button>
-                <button onClick={() => {updatePlot("bar")}}>Bar</button>
-                <button onClick={() => {updatePlot("scatter")}}>Scatter</button>
+                <br/>
+
+                <button onClick={() => {updatePlot("line")}}>Lineplot</button>
+                <button onClick={() => {updatePlot("bar")}}>Barplot</button>
+                <button onClick={() => {updatePlot("scatter")}}>Scatterplot</button>
+                <br/>
+                <button onClick={() => {updatePlot("box")}}>Boxplot</button>
+                <button onClick={() => {updatePlot("dist")}}>Distplot</button>
+
+                <br/>
           </div>
         )
     }

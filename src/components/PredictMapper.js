@@ -2,7 +2,7 @@ import React from 'react'
 import { changeState, changeColumns, changeInputs, changeImage } from '../store/actions'
 import { connect } from 'react-redux'
 import { sendFile, sendParameters, getImage } from '../models/ModelsBigD'
-import GraphMapper from './graphMapper'
+import Predicts from './Predicts'
 import { useState, useEffect } from 'react'
 
 const mapStateToProps = (state) => {
@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const ConnectedVisualizeUpload = ({ currentState,  changeState, columns, changeColumns, inputs, changeInputs, img, changeImage }) => {
+const ConnectedPredictMapper = ({ currentState,  changeState, columns, changeColumns, inputs, changeInputs, img, changeImage }) => {
     const [locStates, setLocStates] = useState(currentState)
 
     const handleCSV = async(e) => {
@@ -55,7 +55,7 @@ const ConnectedVisualizeUpload = ({ currentState,  changeState, columns, changeC
 
     return (
         <div className="file-uploader">
-            {currentState.received ? <GraphMapper/> : <></>}
+            {currentState.received ? <Predicts/> : <></>}
             <br/>
             <input type="file" accept=".csv" onClick={resetState} onChange={handleCSV}></input>
             {currentState.sent ? <></> : <p>You have to upload the dataset before you can display any data</p>}
@@ -63,5 +63,5 @@ const ConnectedVisualizeUpload = ({ currentState,  changeState, columns, changeC
     )
 }
 
-const VisualizeUpload = connect(mapStateToProps, mapDispatchToProps)(ConnectedVisualizeUpload)
-export default VisualizeUpload
+const PredictMapper = connect(mapStateToProps, mapDispatchToProps)(ConnectedPredictMapper)
+export default PredictMapper
